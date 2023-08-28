@@ -7,6 +7,7 @@ import Box from "./main/Box";
 import MoviesList from "./main/MoviesList";
 import WatchedSummary from "./main/WatchedSummary";
 import WatchedMoviesList from "./main/WatchedMoviesList";
+import Rating from "./Rating";
 
 const tempMovieData = [
   {
@@ -74,6 +75,7 @@ function App() {
           <WatchedMoviesList watched={watched} />
         </Box>
       </MainComp>
+      <Rating maxRating={5}></Rating>
     </>
   );
 }
