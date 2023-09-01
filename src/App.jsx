@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./nav/NavBar";
 import MainComp from "./main/MainComp";
 import NumResults from "./nav/NumResults";
@@ -57,8 +57,18 @@ const tempWatchedData = [
 ];
 
 function App() {
-  const [movies, setMovies] = useState(tempMovieData);
+  const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+  useEffect(function () {
+    async function fetchApi() {
+      const res = await fetch(
+        "http://www.omdbapi.com/?i=tt3896198&apikey=f1670ed0&s=transformers"
+      );
+      const data = await res.json();
+      setMovies(data.Search);
+    }
+    fetchApi();
+  }, []);
 
   return (
     <>
@@ -75,7 +85,7 @@ function App() {
           <WatchedMoviesList watched={watched} />
         </Box>
       </MainComp>
-      <Rating maxRating={5}></Rating>
+      <Rating maxRating={10}></Rating>
     </>
   );
 }
