@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function WatchedMoviesList({ watched }) {
+export default function WatchedMoviesList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
@@ -17,8 +17,15 @@ export default function WatchedMoviesList({ watched }) {
             </p>
             <p>
               <span>⏳</span>
-              <span>{movie.runtime} min</span>
+              <span>{movie.Runtime} min</span>
             </p>
+
+            <button
+              className="btn-delete"
+              onClick={() => onDeleteWatched(movie.imdbID)}
+            >
+              X
+            </button>
           </div>
         </li>
       ))}

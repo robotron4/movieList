@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -11,6 +12,7 @@ export default function Rating({
   maxRating = 5,
   color = "#fcc419",
   size = 48,
+  onSetRating,
 }) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
@@ -23,6 +25,7 @@ export default function Rating({
 
   function handleRating(n) {
     setRating(n);
+    onSetRating(n);
   }
   return (
     <div style={containerStyle}>
