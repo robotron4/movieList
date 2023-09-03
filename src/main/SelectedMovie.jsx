@@ -61,6 +61,22 @@ export default function SelectedMovie({
 
   useEffect(
     function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseId();
+        }
+      }
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseId]
+  );
+
+  useEffect(
+    function () {
       if (!Title) {
         return;
       }

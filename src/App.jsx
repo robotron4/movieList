@@ -58,7 +58,6 @@ function App() {
           setError("");
         } catch (err) {
           if (err.name !== "AbortError") {
-            console.error(err.message);
             setError(err.message);
           }
         } finally {
