@@ -58,6 +58,21 @@ export default function SelectedMovie({
     },
     [selectedId]
   );
+
+  useEffect(
+    function () {
+      if (!Title) {
+        return;
+      }
+      document.title = `Movie | ${Title}`;
+      //CLEANUP FUNCTION:
+      return function () {
+        document.title = "movieList";
+      };
+    },
+    [Title]
+  );
+
   return isLoading ? (
     <Loader />
   ) : (
