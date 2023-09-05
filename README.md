@@ -1,8 +1,8 @@
-# React + Vite
+# simple react project to learn the basics of hooks, data fetching and state
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+the key react / js concepts in this project include how to use:
+-useState
+-useRef
+-async functions + fetch() + error handling
+-useEffect
+-localStorage
