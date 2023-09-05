@@ -17,6 +17,7 @@ export default function SelectedMovie({
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
+
   const {
     Title,
     Year,
@@ -28,6 +29,16 @@ export default function SelectedMovie({
     Actors,
     Director,
   } = movie;
+
+  //! BREAKING THE RULES:
+  /* eslint-disable */
+  if (imdbRating > 8) {
+    const [isTop, setIsTop] = useState(true);
+  }
+  if (imdbRating > 9) {
+    return <p>Early returning is breaking the rules</p>;
+  }
+  //! THATS IT
 
   function handleAdd() {
     const newWatchedMovie = {
