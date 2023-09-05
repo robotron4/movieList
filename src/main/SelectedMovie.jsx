@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useKey } from "../useKey";
 import Rating from "../Rating";
 import Loader from "./Loader";
 /* eslint-disable react/prop-types */
@@ -18,25 +19,25 @@ export default function SelectedMovie({
     (movie) => movie.imdbID === selectedId
   )?.userRating;
   const {
-    Title,
-    Year,
-    Poster,
-    Runtime,
+    Title: title,
+    Year: year,
+    Poster: poster,
+    Runtime: runtime,
     imdbRating,
-    Plot,
-    Released,
-    Actors,
-    Director,
+    Plot: plot,
+    Released: released,
+    Actors: actors,
+    Director: director,
   } = movie;
 
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
-      Title,
-      Year,
-      Poster,
+      title,
+      year,
+      poster,
       imdbRating: Number(imdbRating),
-      Runtime: Number(Runtime.split(" ").at(0)),
+      Runtime: Number(runtime.split(" ").at(0)),
       userRating,
     };
     onAddWatched(newWatchedMovie);
@@ -59,34 +60,20 @@ export default function SelectedMovie({
     [selectedId]
   );
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (e.code === "Escape") {
-          onCloseId();
-        }
-      }
-      document.addEventListener("keydown", callback);
-
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
-    },
-    [onCloseId]
-  );
+  useKey("Escape", onCloseId);
 
   useEffect(
     function () {
-      if (!Title) {
+      if (!title) {
         return;
       }
-      document.title = `Movie | ${Title}`;
+      document.title = `Movie | ${title}`;
       //CLEANUP FUNCTION:
       return function () {
         document.title = "movieList";
       };
     },
-    [Title]
+    [title]
   );
 
   return isLoading ? (
@@ -98,13 +85,13 @@ export default function SelectedMovie({
           <button onClick={onCloseId} className="btn-back">
             &larr;
           </button>
-          <img src={Poster} alt="" />
+          <img src={poster} alt="" />
           <div className="details-overview">
-            <h2>{Title}</h2>
+            <h2>{title}</h2>
             <p>
-              {Released} &bull; {Runtime}
+              {released} &bull; {runtime}
             </p>
-            <p>{Rating}</p>
+            <p>{userRating}</p>
             <p>
               <span>🌟</span>
               {imdbRating} imbd Rating
@@ -128,10 +115,10 @@ export default function SelectedMovie({
             )}
           </div>
           <p>
-            <em>{Plot}</em>
+            <em>{plot}</em>
           </p>
-          <p>Starring {Actors}</p>
-          <p>Directed by {Director}</p>
+          <p>Starring {actors}</p>
+          <p>Directed by {director}</p>
         </section>
       </div>
     </>
