@@ -1,9 +1,10 @@
-# simple react project to learn the basics of hooks, data fetching and state
+# movieList app
+Search for movies and add them to your list. Rank the movies you have watched and get more informations about them.
 
-the key react / js concepts in this project include how to use:  
--useState  
--useRef  
--async functions + fetch() + error handling  
--useEffect  
--localStorage  
--custom hooks
+
+# what I've learned
+
+-how to use most common react hooks (useState, useRef, useEffect)  
+-write own custom hooks
+-fetching movies asynchronously from an API and handling errors
+-use localStorage in the browser to store data of watched movies
