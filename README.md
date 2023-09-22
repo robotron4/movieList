@@ -4,7 +4,8 @@ Search for movies and add them to your list. Rank the movies you have watched an
 
 # what I've learned
 
--how to use most common react hooks (useState, useRef, useEffect)  
--write own custom hooks
--fetching movies asynchronously from an API and handling errors
--use localStorage in the browser to store data of watched movies
+- how to use most common react hooks (useState, useRef, useEffect)
+- write own custom hooks
+- fetching movies asynchronously from an API and handling errors
+- use localStorage in the browser to store data of watched movies
+- creating a new git branch and using github
